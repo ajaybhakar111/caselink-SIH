@@ -46,4 +46,4 @@ ready client for the backend (`VITE_API_URL`, default `http://localhost:8000`).
 - SLA, overdue and escalation alerts; role-based access with masked cross-Bureau view
 
 ## Team
-Add team name, problem statement ID and members here.
+Team : The Alchemists
