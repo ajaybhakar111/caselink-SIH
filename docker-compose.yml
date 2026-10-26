@@ -1,0 +1,20 @@
+# Backend + PostgreSQL. Frontend runs separately with `npm run dev` (see README).
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: caselink
+      POSTGRES_PASSWORD: caselink
+      POSTGRES_DB: caselink
+    ports: ["5432:5432"]
+    volumes: [pgdata:/var/lib/postgresql/data]
+  api:
+    build: ./backend
+    environment:
+      DATABASE_URL: postgresql+psycopg://caselink:caselink@db:5432/caselink
+      JWT_SECRET: dev-only-secret-change-me-0123456789abcdef
+      CORS_ORIGINS: http://localhost:5173
+    ports: ["8000:8000"]
+    depends_on: [db]
+volumes:
+  pgdata:
